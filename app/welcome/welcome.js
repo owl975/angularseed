@@ -18,4 +18,15 @@ angular.module('myApp.welcome', ['ngRoute'])
 
   $scope.articles = sync.$asArray();
 
+  $scope.editPost = function(id) {
+    
+    var firebaseObj = new Firebase("https://blistering-heat-2473.firebaseio.com/Articles/" + id);
+ 
+    var syn = $firebase(firebaseObj);
+   
+    $scope.postToUpdate = syn.$asObject();
+ 
+    $('#editModal').modal();      // triggers the modal pop up
+   }
+
 }]);
